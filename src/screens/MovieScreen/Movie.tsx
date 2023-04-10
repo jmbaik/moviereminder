@@ -1,19 +1,21 @@
+import OpenColor from 'open-color';
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
+
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
     borderWidth: 1,
-    borderColor: '#00000050',
+    borderRadius: 8,
+    padding: 12,
+    flexDirection: 'row',
+    borderColor: OpenColor.gray[6],
     marginHorizontal: 10,
     marginVertical: 10,
-    borderRadius: 3,
-    padding: 7,
   },
   poster: {
     width: 100,
     height: 150,
-    backgroundColor: '#00000030',
+    backgroundColor: OpenColor.gray[3],
   },
   info: {
     marginLeft: 10,
@@ -21,7 +23,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 18,
-    color: 'white',
+    color: OpenColor.white,
     fontWeight: 'bold',
   },
   originalTitleText: {

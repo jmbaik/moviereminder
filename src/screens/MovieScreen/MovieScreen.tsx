@@ -1,6 +1,6 @@
 import Colors from 'open-color';
 import React from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {FlatList, Platform, StatusBar, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Movie from './Movie';
 import useMovies from './useMovies';
@@ -10,7 +10,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.black,
   },
-  movieList: {},
+  movieList: {
+    padding: 20,
+  },
+  separator: {height: 16},
 });
 
 const MovieScreen = () => {
@@ -19,8 +22,13 @@ const MovieScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      {Platform.OS === 'ios' ? (
+        <StatusBar barStyle="light-content" />
+      ) : (
+        <StatusBar barStyle="dark-content" />
+      )}
       <FlatList
-        style={styles.movieList}
+        contentContainerStyle={styles.movieList}
         data={movies}
         renderItem={({item: movie}) => (
           <Movie
@@ -32,6 +40,7 @@ const MovieScreen = () => {
             releaseDate={movie.releaseDate}
           />
         )}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
       />
     </SafeAreaView>
   );
