@@ -17,6 +17,10 @@ const styles = StyleSheet.create({
     height: 150,
     backgroundColor: OpenColor.gray[3],
   },
+  posterImage: {
+    width: 100,
+    height: 150,
+  },
   info: {
     marginLeft: 10,
     flex: 1,
@@ -44,6 +48,7 @@ const styles = StyleSheet.create({
 });
 
 interface MovieProps {
+  id: number;
   title: string;
   originalTitle: string;
   releaseDate: string;
@@ -52,6 +57,7 @@ interface MovieProps {
 }
 
 const Movie = ({
+  id,
   title,
   originalTitle,
   releaseDate,
@@ -61,7 +67,9 @@ const Movie = ({
   return (
     <View style={styles.container}>
       <View style={styles.poster}>
-        {posterUrl != null && <Image source={{uri: posterUrl}} />}
+        {posterUrl != null && (
+          <Image style={styles.posterImage} source={{uri: posterUrl}} />
+        )}
       </View>
       <View style={styles.info}>
         <Text style={styles.titleText}>{title}</Text>
